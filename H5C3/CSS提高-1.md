@@ -298,6 +298,7 @@ animation-play-state: [running|paused]#;
 /*running 默认值，当前动画正在运行
   paused 当前动画已被停止*/
 /*可以配合伪类使用（如:hover）*/
+/*多个值用英文逗号分隔*/
 ```
 
 #### animation

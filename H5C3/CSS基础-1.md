@@ -154,10 +154,14 @@ input:focus
 /*兄弟元素之间排序，当选择器的次序对得上且元素为E则样式生效，否则直接忽略*/
 E:first-child	/*子元素为第一个元素且为E*/ 
 E:last-child	/*子元素为最后一个元素且为E*/
-E:nth-child(<n>)	/*子元素为第<n>个元素且为E，其中<n>为数字，关键字（even/odd）或公式*/
-E:nth-last-child(<n>)	/*子元素中倒数第<n>个元素且为E，详细语法和 E:nth-child() 类似*/
+E:nth-child(an+b)	/*子元素为第<n>个元素且为E，其中<n>为数字，关键字（even/odd）或公式*/
+E:nth-last-child(an+b)	/*子元素中倒数第<n>个元素且为E，详细语法和 E:nth-child() 类似*/
 /*
-上述nth-child(<n>)中的<n>具体可以使用如下：
+注意：an+b 中，an 必须写在 b 前面，不能写成 b+an
+并且当 + 或 - 作为单目运算符时，不能和运算对象间有空格，而作为双目运算符时可以有空格隔开
+注：以上的 n 从 0 开始，而元素的次序从 1 开始
+
+上述nth-child(an+b)中的an+b具体可以使用如下：
 1、数字
 	E:nth-child(2)
 2、关键字
@@ -167,16 +171,14 @@ E:nth-last-child(<n>)	/*子元素中倒数第<n>个元素且为E，详细语法�
 	E:nth-child(2n)
 	E:nth-child(2n+1)
 	E:nth-child(-n+3)	选取前三个 
-nth-last-child()和这类似，但是为从后往前的顺序
+nth-last-child()和这类似，但是为从后往前的顺序，即其次序为1的元素为其最后一个元素
 */
 
 /*兄弟元素之间为元素E的进行排序，次序对上的样式生效*/
 E:first-of-type	/*子元素中第一个E元素*/
 E:last-of-type	/*子元素中最后一个E元素*/
-E:nth-of-type(<n>)	/*子元素中第<n>个E元素，详细语法和 E:nth-child() 类似*/
-E:nth-last-of-type(<n>)	/*子元素中倒数第<n>个E元素，详细语法和 E:nth-child() 类似*/
-
-/*注：以上的 n 从 0 开始，而元素的次序从 1 开始*/
+E:nth-of-type(an+b)	/*子元素中第<n>个E元素，详细语法和 E:nth-child() 类似*/
+E:nth-last-of-type(an+b)	/*子元素中倒数第<n>个E元素，详细语法和 E:nth-child() 类似*/
 ```
 
 ![image-20210202195842517](img/image-20210202195842517.png)
@@ -398,7 +400,8 @@ background-color: transparent;
 ```css
 background-image: [none|url(<url>)]#;
 /*当需要调用背景图片时，会使用到 url()*/
-/*none为默认值，可以同时有多个值*/
+/* none为默认值，可以同时有多个值，用英文逗号分隔，为一个元素设置一个或多个背景图像
+在绘制时，图像以 z 方向堆叠的方式进行。先指定的图像会在之后指定的图像上面绘制。因此指定的第一个图像“最接近用户” */
 /*该属性的取值还有很多，详见 https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-image */
 ```
 
